@@ -89,7 +89,7 @@
           ]
         }
       ],
-      "icon": "build/rapidhls.png",
+      "icon": "build/rapidhls.ico",
       "sign": null,
       "verifyUpdateCodeSignature": false,
       "artifactName": "${productName}-${version}-${arch}-Setup.${ext}"
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "icon": "build/rapidhls.png",
+      "icon": "build/rapidhls.icns",
       "category": "public.app-category.utilities",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,

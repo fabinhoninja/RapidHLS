@@ -51,7 +51,7 @@ A powerful desktop application for converting video files to HLS (HTTP Live Stre
 
 ## 🚀 Download & Installation
 
-Download ready-to-use releases from the [Releases page](https://github.com/yourusername/RapidHLS/releases).
+Download ready-to-use releases from the [Releases page](https://github.com/aliesm-com/RapidHLS/releases).
 
 ## 🛠️ Building & Development
 

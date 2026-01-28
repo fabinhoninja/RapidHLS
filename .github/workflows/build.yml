@@ -18,17 +18,8 @@ jobs:
           - os: windows-latest
             platform: win
             arch: x64
-          - os: windows-latest
-            platform: win
-            arch: ia32
 
           # macOS builds
-          - os: macos-latest
-            platform: mac
-            arch: x64
-          - os: macos-latest
-            platform: mac
-            arch: arm64
           - os: macos-latest
             platform: mac
             arch: universal
@@ -37,9 +28,6 @@ jobs:
           - os: ubuntu-latest
             platform: linux
             arch: x64
-          - os: ubuntu-latest
-            platform: linux
-            arch: arm64
 
     runs-on: ${{ matrix.os }}
 

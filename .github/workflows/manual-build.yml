@@ -16,9 +16,6 @@ jobs:
   build-windows:
     if: contains(github.event.inputs.platforms, 'win') || contains(github.event.inputs.platforms, 'all')
     runs-on: windows-latest
-    strategy:
-      matrix:
-        arch: [x64, ia32]
 
     steps:
       - name: Checkout code
@@ -33,25 +30,22 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build Windows ${{ matrix.arch }}
+      - name: Build Windows x64
         run: |
           yarn tsc
           yarn vite build
-          yarn electron-builder --win --${{ matrix.arch }} --publish never
+          yarn electron-builder --win --x64 --publish never
 
-      - name: Upload Windows ${{ matrix.arch }} artifacts
+      - name: Upload Windows x64 artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: windows-${{ matrix.arch }}
+          name: windows-x64
           path: release/**/*
           retention-days: 7
 
   build-macos:
     if: contains(github.event.inputs.platforms, 'mac') || contains(github.event.inputs.platforms, 'all')
     runs-on: macos-latest
-    strategy:
-      matrix:
-        arch: [x64, arm64, universal]
 
     steps:
       - name: Checkout code
@@ -66,25 +60,22 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build macOS ${{ matrix.arch }}
+      - name: Build macOS universal
         run: |
           yarn tsc
           yarn vite build
-          yarn electron-builder --mac --${{ matrix.arch }} --publish never
+          yarn electron-builder --mac --universal --publish never
 
-      - name: Upload macOS ${{ matrix.arch }} artifacts
+      - name: Upload macOS universal artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: macos-${{ matrix.arch }}
+          name: macos-universal
           path: release/**/*
           retention-days: 7
 
   build-linux:
     if: contains(github.event.inputs.platforms, 'linux') || contains(github.event.inputs.platforms, 'all')
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [x64, arm64]
 
     steps:
       - name: Checkout code
@@ -104,16 +95,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y rpm fakeroot dpkg
 
-      - name: Build Linux ${{ matrix.arch }}
+      - name: Build Linux x64
         run: |
           yarn tsc
           yarn vite build
-          yarn electron-builder --linux --${{ matrix.arch }} --publish never
+          yarn electron-builder --linux --x64 --publish never
 
-      - name: Upload Linux ${{ matrix.arch }} artifacts
+      - name: Upload Linux x64 artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: linux-${{ matrix.arch }}
+          name: linux-x64
           path: release/**/*
           retention-days: 7
 

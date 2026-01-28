@@ -1,15 +1,75 @@
 # RapidHLS - HLS Video Converter
 
+<div align="center">
+
+![RapidHLS](https://img.shields.io/badge/RapidHLS-v1.0.0-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 A powerful desktop application for converting video files to HLS (HTTP Live Streaming) format, built with Electron, React, and Shadcn UI.
 
-## Features
+</div>
+
+---
+
+## ✨ Features
 
 - **Single & Bulk Conversion**: Convert individual files or process multiple videos at once
 - **Custom Settings**: Configure FFMPEG path and default split time
 - **Dark Mode**: Beautiful dark theme throughout the application
 - **Custom Title Bar**: Frameless window with minimize and close buttons
-- **Multi-Platform**: Build for Windows, macOS, and Linux
+- **Multi-Platform**: Support for Windows, macOS, and Linux
 - **First-Time Setup**: Guided settings configuration on first launch
+
+## 📦 Available Build Formats
+
+### Windows
+
+- NSIS Installer (x64, ia32)
+- Portable (x64, ia32)
+- ZIP Archive (x64, ia32)
+
+### macOS
+
+- DMG Image (x64, arm64, universal)
+- PKG Installer (x64, arm64, universal)
+- ZIP Archive (x64, arm64, universal)
+
+### Linux
+
+- AppImage (x64, arm64)
+- DEB Package (x64, arm64)
+- RPM Package (x64, arm64)
+- TAR.GZ Archive (x64, arm64)
+- Snap Package (x64)
+
+## 🚀 Download & Installation
+
+Download ready-to-use releases from the [Releases page](https://github.com/yourusername/RapidHLS/releases).
+
+## 🛠️ Building & Development
+
+For complete build instructions, see [BUILD.md](BUILD.md).
+
+**Important:** Use GitHub Actions for building all platforms, not local builds!
+
+```bash
+# Install dependencies
+yarn install
+
+# Run in development mode
+yarn dev
+
+# Build (for testing only - use GitHub Actions for production)
+# For Windows
+yarn build:win
+
+# For macOS
+yarn build:mac
+
+# For Linux
+yarn build:linux
+```
 
 ## Project Structure
 
@@ -45,26 +105,31 @@ RapidHLS/
 ## Pages
 
 ### Home (`/`)
+
 - Two main conversion options: **Single Convert** and **Bulk Convert**
 - Quick access to conversion methods
 - Footer with GitHub link to creator
 
 ### Settings (`/settings`)
+
 - Configure FFMPEG installation path
 - Set default split time for HLS segments
 - First-time setup wizard with "Later" option
 - Settings stored in localStorage
 
 ### About (`/about`)
+
 - Detailed information about RapidHLS
 - Explanation of HLS technology
 - Feature list and requirements
 - Links to FFMPEG download
 
 ### Single Convert (`/single-convert`)
+
 - Convert individual video files (Coming soon)
 
 ### Bulk Convert (`/bulk-convert`)
+
 - Process multiple videos at once (Coming soon)
 
 ## Technology Stack
@@ -128,7 +193,7 @@ When launching RapidHLS for the first time:
 
 1. **Splash Screen**: Animated RapidHLS logo with "Created By AliESM"
 2. **Auto-Redirect**: Automatically redirected to Settings page
-3. **Configure or Skip**: 
+3. **Configure or Skip**:
    - Configure FFMPEG path and split time, then click "Save Settings"
    - Or click "Later" to skip and explore the app
 4. **Never Again**: Settings page won't auto-show after first configuration

@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "RapidHLS - Multi-platform Electron application",
   "main": "dist-electron/main.js",
-  "author": "Ali ESM",
+  "author": "Ali ESM <hi@aliesm.com>",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
-    "build:win": "tsc && vite build && electron-builder --win --x64",
+    "build:win": "tsc && vite build && electron-builder --win",
+    "build:win:x64": "tsc && vite build && electron-builder --win --x64",
+    "build:win:ia32": "tsc && vite build && electron-builder --win --ia32",
     "build:mac": "tsc && vite build && electron-builder --mac",
+    "build:mac:x64": "tsc && vite build && electron-builder --mac --x64",
+    "build:mac:arm64": "tsc && vite build && electron-builder --mac --arm64",
+    "build:mac:universal": "tsc && vite build && electron-builder --mac --universal",
     "build:linux": "tsc && vite build && electron-builder --linux",
+    "build:linux:x64": "tsc && vite build && electron-builder --linux --x64",
+    "build:linux:arm64": "tsc && vite build && electron-builder --linux --arm64",
+    "build:all": "yarn build:win && yarn build:mac && yarn build:linux",
     "build:dir": "tsc && vite build && electron-builder --dir",
     "clean": "rm -rf dist dist-electron release node_modules/.cache",
     "preview": "vite preview",
@@ -72,14 +80,29 @@
         {
           "target": "nsis",
           "arch": [
-            "x64"
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "ia32"
           ]
         }
       ],
       "icon": "build/icon.ico",
       "sign": null,
       "verifyUpdateCodeSignature": false,
-      "artifactName": "${productName}-${version}-Setup.${ext}",
+      "artifactName": "${productName}-${version}-${arch}-Setup.${ext}",
       "compression": "maximum"
     },
     "nsis": {
@@ -91,19 +114,98 @@
       "createStartMenuShortcut": true,
       "shortcutName": "RapidHLS"
     },
+    "portable": {
+      "artifactName": "${productName}-${version}-${arch}-Portable.${ext}"
+    },
     "mac": {
       "target": [
-        "dmg"
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
+        },
+        {
+          "target": "pkg",
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
+        }
       ],
       "icon": "build/icon.icns",
-      "category": "public.app-category.utilities"
+      "category": "public.app-category.utilities",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "sign": false
+    },
+    "pkg": {
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
     },
     "linux": {
       "target": [
-        "AppImage"
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "snap",
+          "arch": [
+            "x64"
+          ]
+        }
       ],
       "icon": "build/icon.png",
-      "category": "Utility"
+      "category": "Utility",
+      "maintainer": "Ali ESM <hi@aliesm.com>",
+      "vendor": "Ali ESM",
+      "synopsis": "RapidHLS - Multi-platform Electron application",
+      "description": "RapidHLS - Multi-platform Electron application for HLS conversion"
+    },
+    "snap": {
+      "confinement": "strict",
+      "grade": "stable",
+      "summary": "RapidHLS - HLS Converter"
     }
   }
 }

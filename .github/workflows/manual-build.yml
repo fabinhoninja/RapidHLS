@@ -1,0 +1,135 @@
+name: Manual Build (All Platforms)
+
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Platforms to build (comma-separated: win,mac,linux or all)'
+        required: true
+        default: 'all'
+        type: string
+
+jobs:
+  build-windows:
+    if: contains(github.event.inputs.platforms, 'win') || contains(github.event.inputs.platforms, 'all')
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch: [x64, ia32]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Windows ${{ matrix.arch }}
+        run: |
+          yarn tsc
+          yarn vite build
+          yarn electron-builder --win --${{ matrix.arch }} --publish never
+
+      - name: Upload Windows ${{ matrix.arch }} artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-${{ matrix.arch }}
+          path: release/**/*
+          retention-days: 7
+
+  build-macos:
+    if: contains(github.event.inputs.platforms, 'mac') || contains(github.event.inputs.platforms, 'all')
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        arch: [x64, arm64, universal]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build macOS ${{ matrix.arch }}
+        run: |
+          yarn tsc
+          yarn vite build
+          yarn electron-builder --mac --${{ matrix.arch }} --publish never
+
+      - name: Upload macOS ${{ matrix.arch }} artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-${{ matrix.arch }}
+          path: release/**/*
+          retention-days: 7
+
+  build-linux:
+    if: contains(github.event.inputs.platforms, 'linux') || contains(github.event.inputs.platforms, 'all')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm fakeroot dpkg
+
+      - name: Build Linux ${{ matrix.arch }}
+        run: |
+          yarn tsc
+          yarn vite build
+          yarn electron-builder --linux --${{ matrix.arch }} --publish never
+
+      - name: Upload Linux ${{ matrix.arch }} artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-${{ matrix.arch }}
+          path: release/**/*
+          retention-days: 7
+
+  summary:
+    needs: [build-windows, build-macos, build-linux]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-builds
+
+      - name: Display build summary
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Generated Files:" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find all-builds -type f -exec ls -lh {} \; >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

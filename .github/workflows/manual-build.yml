@@ -9,6 +9,9 @@ on:
         default: 'all'
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     if: contains(github.event.inputs.platforms, 'win') || contains(github.event.inputs.platforms, 'all')

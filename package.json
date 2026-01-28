@@ -10,7 +10,6 @@
     "build": "tsc && vite build && electron-builder",
     "build:win": "tsc && vite build && electron-builder --win",
     "build:win:x64": "tsc && vite build && electron-builder --win --x64",
-    "build:win:ia32": "tsc && vite build && electron-builder --win --ia32",
     "build:mac": "tsc && vite build && electron-builder --mac",
     "build:mac:x64": "tsc && vite build && electron-builder --mac --x64",
     "build:mac:arm64": "tsc && vite build && electron-builder --mac --arm64",
@@ -74,36 +73,26 @@
     "asarUnpack": [
       "**/*.node"
     ],
-    "compression": "maximum",
+    "compression": "normal",
     "win": {
       "target": [
         {
           "target": "nsis",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         },
         {
           "target": "portable",
           "arch": [
-            "x64",
-            "ia32"
-          ]
-        },
-        {
-          "target": "zip",
-          "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         }
       ],
-      "icon": "build/icon.ico",
+      "icon": "build/rapidhls.png",
       "sign": null,
       "verifyUpdateCodeSignature": false,
-      "artifactName": "${productName}-${version}-${arch}-Setup.${ext}",
-      "compression": "maximum"
+      "artifactName": "${productName}-${version}-${arch}-Setup.${ext}"
     },
     "nsis": {
       "oneClick": false,
@@ -144,7 +133,7 @@
           ]
         }
       ],
-      "icon": "build/icon.icns",
+      "icon": "build/rapidhls.png",
       "category": "public.app-category.utilities",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
@@ -195,7 +184,7 @@
           ]
         }
       ],
-      "icon": "build/icon.png",
+      "icon": "build/rapidhls.png",
       "category": "Utility",
       "maintainer": "Ali ESM <hi@aliesm.com>",
       "vendor": "Ali ESM",

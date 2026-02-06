@@ -20,18 +20,46 @@ export function InstallGuide() {
       <div className="w-full max-w-4xl space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-4">
-            <Download className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-medium text-slate-300">Installation Instructions</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 mb-4">
+            <Download className="w-4 h-4 text-green-400" />
+            <span className="text-sm font-medium text-slate-300">Optional - Advanced Users</span>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            FFMPEG Installation
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Custom FFMPEG Installation
           </h1>
-          <p className="text-lg text-slate-400">Step-by-step guide to install FFMPEG on your system</p>
+          <p className="text-lg text-slate-400">
+            FFMPEG is bundled by default. This guide is for custom installations only.
+          </p>
         </div>
 
         {/* Content */}
         <div className="space-y-6">
+          {/* Info Banner */}
+          <div className="relative rounded-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-600/10 via-blue-500/5 to-transparent" />
+            <div className="relative bg-slate-900/40 backdrop-blur-2xl border border-green-700/50 rounded-2xl p-8">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-xl bg-green-500/10">
+                  <Download className="w-6 h-6 text-green-400" />
+                </div>
+                <div className="space-y-2 flex-1">
+                  <h2 className="text-2xl font-bold text-slate-100">✓ FFMPEG Already Included!</h2>
+                  <p className="text-slate-300 leading-relaxed">
+                    <span className="font-semibold text-green-400">Good news!</span> RapidHLS comes
+                    with FFMPEG pre-installed and ready to use. You don't need to install anything
+                    separately. The application will automatically use the bundled FFMPEG binary
+                    that matches your operating system.
+                  </p>
+                  <p className="text-slate-400 text-sm leading-relaxed pt-2">
+                    The instructions below are only for advanced users who wish to use a custom
+                    FFMPEG installation or a specific version. For most users, you can simply close
+                    this page and start converting!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* What is FFMPEG */}
           <div className="relative rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-500/5 to-transparent" />
@@ -43,9 +71,10 @@ export function InstallGuide() {
                 <div className="space-y-2 flex-1">
                   <h2 className="text-2xl font-bold text-slate-100">What is FFMPEG?</h2>
                   <p className="text-slate-300 leading-relaxed">
-                    FFMPEG is a free and open-source multimedia framework that can decode, encode, transcode, 
-                    mux, demux, stream, filter and play almost anything that humans and machines have created. 
-                    RapidHLS uses FFMPEG to convert your videos into HLS format.
+                    FFMPEG is a free and open-source multimedia framework that can decode, encode,
+                    transcode, mux, demux, stream, filter and play almost anything that humans and
+                    machines have created. RapidHLS uses FFMPEG to convert your videos into HLS
+                    format.
                   </p>
                 </div>
               </div>
@@ -66,19 +95,27 @@ export function InstallGuide() {
                     <h3 className="text-xl font-bold text-slate-100">Windows</h3>
                     <ol className="space-y-2 text-slate-300">
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">1</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">
+                          1
+                        </span>
                         <span>Download FFMPEG from the official website</span>
                       </li>
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">2</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">
+                          2
+                        </span>
                         <span>Extract to a location (e.g., C:\Program Files\ffmpeg)</span>
                       </li>
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">3</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">
+                          3
+                        </span>
                         <span>Copy the path to the bin folder</span>
                       </li>
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">4</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-semibold text-blue-400">
+                          4
+                        </span>
                         <span>Paste this path in RapidHLS settings</span>
                       </li>
                     </ol>
@@ -99,18 +136,26 @@ export function InstallGuide() {
                     <h3 className="text-xl font-bold text-slate-100">macOS</h3>
                     <ol className="space-y-2 text-slate-300">
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">1</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">
+                          1
+                        </span>
                         <span>Install Homebrew if not already installed</span>
                       </li>
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">2</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">
+                          2
+                        </span>
                         <div className="flex-1">
                           <span>Run: </span>
-                          <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-purple-300 border border-slate-700/50">brew install ffmpeg</code>
+                          <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-purple-300 border border-slate-700/50">
+                            brew install ffmpeg
+                          </code>
                         </div>
                       </li>
                       <li className="flex gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">3</span>
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-semibold text-purple-400">
+                          3
+                        </span>
                         <span>Use /usr/local/bin or /opt/homebrew/bin path</span>
                       </li>
                     </ol>
@@ -132,15 +177,21 @@ export function InstallGuide() {
                     <div className="space-y-2 text-slate-300">
                       <div className="flex gap-3">
                         <span>Ubuntu/Debian: </span>
-                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">sudo apt install ffmpeg</code>
+                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">
+                          sudo apt install ffmpeg
+                        </code>
                       </div>
                       <div className="flex gap-3">
                         <span>Fedora: </span>
-                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">sudo dnf install ffmpeg</code>
+                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">
+                          sudo dnf install ffmpeg
+                        </code>
                       </div>
                       <div className="flex gap-3">
                         <span>Arch: </span>
-                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">sudo pacman -S ffmpeg</code>
+                        <code className="px-2 py-1 bg-slate-800/80 rounded text-sm text-pink-300 border border-slate-700/50">
+                          sudo pacman -S ffmpeg
+                        </code>
                       </div>
                       <p className="pt-2">FFMPEG will typically be in /usr/bin</p>
                     </div>

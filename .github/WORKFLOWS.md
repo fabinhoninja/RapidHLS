@@ -75,8 +75,8 @@ This workflow is for **manual and test** builds. You can choose which platforms 
 ### Each job includes these steps:
 
 1. **Checkout code**: Download project code
-2. **Setup Node.js**: Install Node.js version 20 with yarn cache
-3. **Install dependencies**: Install packages with `yarn install --frozen-lockfile`
+2. **Setup Node.js**: Install Node.js version 20 with pnpm cache
+3. **Install dependencies**: Install packages with `pnpm install --frozen-lockfile`
 4. **Install system dependencies** (Linux only): Install rpm, fakeroot, dpkg
 5. **Build application**: Compile TypeScript, build with Vite, and create with electron-builder
 6. **Upload artifacts**: Upload output files
@@ -134,7 +134,7 @@ release/
 
 ## Important Notes
 
-1. **Cache**: yarn cache is used to speed up builds
+1. **Cache**: pnpm cache is used to speed up builds
 2. **Parallel Jobs**: All platforms are built in parallel
 3. **Conditional**: manual-build workflows only build selected platforms
 4. **Frozen Lockfile**: Uses `--frozen-lockfile` to ensure consistency

@@ -136,7 +136,8 @@ export function Settings() {
                   className="text-sm font-semibold text-slate-200 flex items-center gap-2"
                 >
                   <Zap className="w-4 h-4 text-blue-400" />
-                  FFMPEG Installation Path
+                  FFMPEG Custom Path{' '}
+                  <span className="text-xs text-slate-500 font-normal">(Optional)</span>
                 </label>
                 <button
                   onClick={handleFFMPEGHelp}
@@ -147,13 +148,17 @@ export function Settings() {
                   <span>Installation Guide</span>
                 </button>
               </div>
+              <p className="text-xs text-slate-400">
+                FFMPEG is bundled with RapidHLS. Only specify a custom path if you want to use a
+                different FFMPEG installation.
+              </p>
               <div className="flex gap-3">
                 <input
                   id="ffmpeg"
                   type="text"
                   value={ffmpegPath}
                   onChange={(e) => setFfmpegPath(e.target.value)}
-                  placeholder="C:\Program Files\ffmpeg\bin"
+                  placeholder="Leave empty to use bundled FFMPEG"
                   className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-200"
                 />
                 <button

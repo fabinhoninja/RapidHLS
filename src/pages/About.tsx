@@ -43,9 +43,10 @@ export function About() {
                 <h2 className="text-2xl font-bold text-slate-100">What is RapidHLS?</h2>
               </div>
               <p className="text-slate-300 leading-relaxed pl-11">
-                RapidHLS is a powerful desktop application designed to convert video files into HLS (HTTP Live Streaming) format.
-                It provides both single file conversion and bulk processing capabilities, making it perfect for content creators,
-                developers, and anyone who needs to prepare videos for adaptive streaming.
+                RapidHLS is a powerful desktop application designed to convert video files into HLS
+                (HTTP Live Streaming) format. It provides both single file conversion and bulk
+                processing capabilities, making it perfect for content creators, developers, and
+                anyone who needs to prepare videos for adaptive streaming.
               </p>
             </section>
 
@@ -59,8 +60,8 @@ export function About() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-11">
                 <div className="flex items-start gap-2 text-slate-300">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                  <span>Single file conversion for quick processing</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2" />
+                  <span>FFMPEG bundled automatically - no installation needed</span>
                 </div>
                 <div className="flex items-start gap-2 text-slate-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
@@ -68,15 +69,15 @@ export function About() {
                 </div>
                 <div className="flex items-start gap-2 text-slate-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                  <span>Customizable split time for HLS segments</span>
+                  <span>Single file conversion for quick processing</span>
                 </div>
                 <div className="flex items-start gap-2 text-slate-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
-                  <span>Support for various video formats</span>
+                  <span>Customizable split time for HLS segments</span>
                 </div>
                 <div className="flex items-start gap-2 text-slate-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                  <span>Fast processing using FFMPEG</span>
+                  <span>Support for various video formats</span>
                 </div>
                 <div className="flex items-start gap-2 text-slate-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
@@ -94,9 +95,10 @@ export function About() {
                 <h2 className="text-2xl font-bold text-slate-100">What is HLS?</h2>
               </div>
               <p className="text-slate-300 leading-relaxed pl-11">
-                HTTP Live Streaming (HLS) is an adaptive bitrate streaming protocol developed by Apple.
-                It breaks down video files into small HTTP-based file segments and delivers them using standard web servers.
-                This allows for smooth video playback across different network conditions and devices.
+                HTTP Live Streaming (HLS) is an adaptive bitrate streaming protocol developed by
+                Apple. It breaks down video files into small HTTP-based file segments and delivers
+                them using standard web servers. This allows for smooth video playback across
+                different network conditions and devices.
               </p>
             </section>
 
@@ -108,17 +110,27 @@ export function About() {
                 </div>
                 <h2 className="text-2xl font-bold text-slate-100">Requirements</h2>
               </div>
-              <p className="text-slate-300 leading-relaxed pl-11">
-                RapidHLS requires FFMPEG to be installed on your system. You can download FFMPEG from{' '}
-                <a
-                  href="https://ffmpeg.org/download.html"
-                  onClick={handleLinkClick}
-                  className="text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
-                >
-                  ffmpeg.org
-                </a>
-                {' '}and configure the path in the Settings page.
-              </p>
+              <div className="space-y-3 pl-11">
+                <p className="text-slate-300 leading-relaxed">
+                  <span className="text-green-400 font-semibold">
+                    ✓ FFMPEG is bundled automatically
+                  </span>{' '}
+                  - RapidHLS includes FFMPEG binaries for your platform, so no manual installation
+                  is required! The application will use the bundled version by default.
+                </p>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  If you prefer to use a custom FFMPEG installation, you can configure the path in
+                  the Settings page. Advanced users can download a specific FFMPEG version from{' '}
+                  <a
+                    href="https://ffmpeg.org/download.html"
+                    onClick={handleLinkClick}
+                    className="text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                  >
+                    ffmpeg.org
+                  </a>{' '}
+                  if needed.
+                </p>
+              </div>
             </section>
 
             {/* Back Button */}

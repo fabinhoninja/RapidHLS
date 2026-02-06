@@ -44,13 +44,13 @@ If you must build locally:
 
 ```bash
 # Windows (Windows builds only)
-yarn build:win
+pnpm build:win
 
 # macOS (macOS builds only)
-yarn build:mac
+pnpm build:mac
 
 # Linux (Linux builds only)
-yarn build:linux
+pnpm build:linux
 ```
 
 ## Output Formats
@@ -77,26 +77,32 @@ yarn build:linux
 
 ## Important Notes
 
-1. **Code Signing**: Code signing is currently disabled. For production:
+1. **FFMPEG Bundling**: FFMPEG is automatically bundled with the application via `ffmpeg-static` package:
+   - Platform-specific FFMPEG binaries are included in the build
+   - No separate FFMPEG installation required by end-users
+   - Binaries are unpacked from asar for execution
+   - Custom FFMPEG paths can still be configured by advanced users
+
+2. **Code Signing**: Code signing is currently disabled. For production:
    - Windows: You need a Code Signing certificate
    - macOS: Apple Developer Certificate is required
 
-2. **Notarization (macOS)**: For distributing macOS apps outside the App Store, you must notarize your app
+3. **Notarization (macOS)**: For distributing macOS apps outside the App Store, you must notarize your app
 
-3. **Auto-update**: You can enable auto-update by adding the appropriate configuration
+4. **Auto-update**: You can enable auto-update by adding the appropriate configuration
 
 ## Requirements for Local Build
 
 ### Windows
 
 ```bash
-yarn install
+pnpm install
 ```
 
 ### macOS
 
 ```bash
-yarn install
+pnpm install
 # For code signing (optional):
 # security find-identity -v -p codesigning
 ```
@@ -105,7 +111,7 @@ yarn install
 
 ```bash
 sudo apt-get install -y rpm fakeroot dpkg
-yarn install
+pnpm install
 ```
 
 ## Troubleshooting

@@ -12,13 +12,13 @@ A powerful desktop application for converting video files to HLS (HTTP Live Stre
 
 ![rapidhls](https://github.com/user-attachments/assets/b5d08265-0d4c-4282-b107-4d54baf202ea)
 
-
 ---
 
 ## ✨ Features
 
+- **Bundled FFMPEG**: FFMPEG is automatically included - no manual installation required!
 - **Single & Bulk Conversion**: Convert individual files or process multiple videos at once
-- **Custom Settings**: Configure FFMPEG path and default split time
+- **Custom Settings**: Optional custom FFMPEG path and default split time configuration
 - **Dark Mode**: Beautiful dark theme throughout the application
 - **Custom Title Bar**: Frameless window with minimize and close buttons
 - **Multi-Platform**: Support for Windows, macOS, and Linux
@@ -46,7 +46,6 @@ A powerful desktop application for converting video files to HLS (HTTP Live Stre
 - TAR.GZ Archive (x64, arm64)
 - Snap Package (x64)
 
-
 ![rapidhls2](https://github.com/user-attachments/assets/e0f533f1-9735-4724-af14-f24c4681560d)
 
 ## 🚀 Download & Installation
@@ -61,20 +60,20 @@ For complete build instructions, see [BUILD.md](BUILD.md).
 
 ```bash
 # Install dependencies
-yarn install
+pnpm install
 
 # Run in development mode
-yarn dev
+pnpm dev
 
 # Build (for testing only - use GitHub Actions for production)
 # For Windows
-yarn build:win
+pnpm build:win
 
 # For macOS
-yarn build:mac
+pnpm build:mac
 
 # For Linux
-yarn build:linux
+pnpm build:linux
 ```
 
 ## Project Structure
@@ -128,7 +127,7 @@ RapidHLS/
 - Detailed information about RapidHLS
 - Explanation of HLS technology
 - Feature list and requirements
-- Links to FFMPEG download
+- Information about bundled FFMPEG
 
 ### Single Convert (`/single-convert`)
 
@@ -154,35 +153,35 @@ RapidHLS/
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- Yarn package manager
-- FFMPEG installed on your system
+- pnpm package manager
+- FFMPEG is bundled automatically (no separate installation needed)
 
 ### Installation
 
 ```bash
 # Install dependencies
-yarn install
+pnpm install
 
 # Run in development mode
-yarn dev
+pnpm dev
 
 # Format code
-yarn format
+pnpm format
 
 # Check formatting
-yarn format:check
+pnpm format:check
 ```
 
 ### Building
 
 ```bash
 # Build for all platforms
-yarn build
+pnpm build
 
 # Build for specific platform
-yarn build:win    # Windows (NSIS + Portable)
-yarn build:mac    # macOS (DMG + ZIP)
-yarn build:linux  # Linux (AppImage + deb + rpm)
+pnpm build:win    # Windows (NSIS + Portable)
+pnpm build:mac    # macOS (DMG + ZIP)
+pnpm build:linux  # Linux (AppImage + deb + rpm)
 ```
 
 ## Navigation
@@ -218,10 +217,10 @@ Settings are stored in browser's localStorage:
 
 ## Scripts
 
-- `yarn dev` - Start development server
-- `yarn build` - Build for production (all platforms)
-- `yarn build:win` - Build for Windows
-- `yarn build:mac` - Build for macOS
-- `yarn build:linux` - Build for Linux
-- `yarn format` - Format code with Prettier
-- `yarn format:check` - Check code formatting
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production (all platforms)
+- `pnpm build:win` - Build for Windows
+- `pnpm build:mac` - Build for macOS
+- `pnpm build:linux` - Build for Linux
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting

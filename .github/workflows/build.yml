@@ -39,16 +39,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build application
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          yarn build:${{ matrix.platform }} --${{ matrix.arch }}
+          pnpm build:${{ matrix.platform }} --${{ matrix.arch }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

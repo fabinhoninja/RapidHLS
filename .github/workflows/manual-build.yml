@@ -25,16 +25,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build Windows x64
         run: |
-          yarn tsc
-          yarn vite build
-          yarn electron-builder --win --x64 --publish never
+          pnpm tsc
+          pnpm vite build
+          pnpm electron-builder --win --x64 --publish never
 
       - name: Upload Windows x64 artifacts
         uses: actions/upload-artifact@v4
@@ -55,16 +60,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build macOS universal
         run: |
-          yarn tsc
-          yarn vite build
-          yarn electron-builder --mac --universal --publish never
+          pnpm tsc
+          pnpm vite build
+          pnpm electron-builder --mac --universal --publish never
 
       - name: Upload macOS universal artifacts
         uses: actions/upload-artifact@v4
@@ -85,10 +95,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Install system dependencies
         run: |
@@ -97,9 +112,9 @@ jobs:
 
       - name: Build Linux x64
         run: |
-          yarn tsc
-          yarn vite build
-          yarn electron-builder --linux --x64 --publish never
+          pnpm tsc
+          pnpm vite build
+          pnpm electron-builder --linux --x64 --publish never
 
       - name: Upload Linux x64 artifacts
         uses: actions/upload-artifact@v4

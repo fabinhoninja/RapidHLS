@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, shell, dialog } from 'electron'
 import path from 'path'
 import { spawn } from 'child_process'
 import fs from 'fs'
+import ffmpegStatic from 'ffmpeg-static'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -207,7 +208,9 @@ function createWindow() {
         fs.mkdirSync(outputDir, { recursive: true })
 
         // Determine FFMPEG executable path
-        let ffmpegCommand = 'ffmpeg'
+        // Priority: 1. User custom path, 2. Bundled ffmpeg-static, 3. System PATH
+        let ffmpegCommand: string
+
         if (ffmpegPath) {
           // User provided custom FFMPEG path
           if (process.platform === 'win32') {
@@ -227,10 +230,13 @@ function createWindow() {
             if (fs.existsSync(altCommand)) {
               ffmpegCommand = altCommand
             } else {
-              // Fallback to system PATH
-              ffmpegCommand = 'ffmpeg'
+              // Fallback to bundled ffmpeg-static
+              ffmpegCommand = ffmpegStatic || 'ffmpeg'
             }
           }
+        } else {
+          // Use bundled ffmpeg-static as default
+          ffmpegCommand = ffmpegStatic || 'ffmpeg'
         }
 
         let ffmpegArgs: string[]

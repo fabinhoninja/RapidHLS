@@ -99,6 +99,9 @@
           ]
         }
       ],
+      "publisherName": [
+        "Ali ESM"
+      ],
       "icon": "build/rapidhls.ico",
       "sign": null,
       "verifyUpdateCodeSignature": false,

